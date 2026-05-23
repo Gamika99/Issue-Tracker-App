@@ -5,7 +5,7 @@ import { body, validationResult } from 'express-validator';
 
 const generateToken = (id: string) => {
   return jwt.sign({ id }, process.env.JWT_SECRET!, {
-    expiresIn: process.env.JWT_EXPIRE
+    expiresIn: '30d' // Use string literal instead of env variable
   });
 };
 
@@ -29,7 +29,7 @@ export const register = async (req: Request, res: Response) => {
       password
     });
 
-    const token = generateToken(user._id);
+    const token = generateToken(user._id.toString());
 
     res.status(201).json({
       success: true,
@@ -62,7 +62,7 @@ export const login = async (req: Request, res: Response) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const token = generateToken(user._id);
+    const token = generateToken(user._id.toString());
 
     res.json({
       success: true,
