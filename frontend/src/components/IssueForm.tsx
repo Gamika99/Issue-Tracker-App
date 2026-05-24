@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Issue } from '../types';
 import { 
   MdTitle, 
@@ -7,7 +7,6 @@ import {
   MdBugReport,
   MdClose,
   MdSave,
-  MdRefresh,
   MdWarning,
   MdInfo,
   MdCheckCircle,
@@ -269,7 +268,7 @@ const IssueForm: React.FC<IssueFormProps> = ({ initialData, onSubmit, onCancel }
                 onChange={handleChange}
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 cursor-pointer hover:border-purple-300"
               >
-                {Object.entries(statusConfig).map(([key, config]) => (
+                {Object.entries(statusConfig).map(([key]) => (
                   <option key={key} value={key} className="py-2">
                     {key}
                   </option>
