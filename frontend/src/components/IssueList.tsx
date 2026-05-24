@@ -44,13 +44,6 @@ const IssueList: React.FC<IssueListProps> = ({ issues, onDelete, counts }) => {
     }
   };
 
-  const handleResolve = (issue: Issue) => {
-    if (window.confirm('Mark this issue as resolved?')) {
-      // This will be handled by parent component
-      onDelete(issue._id); // Temporary - will be replaced with update function
-    }
-  };
-
   return (
     <div>
       {/* Status Cards */}
